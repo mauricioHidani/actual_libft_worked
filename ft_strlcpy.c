@@ -6,13 +6,13 @@
 /*   By: mhidani <mhidani@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 10:13:29 by mhidani           #+#    #+#             */
-/*   Updated: 2025/07/24 10:36:42 by mhidani          ###   ########.fr       */
+/*   Updated: 2025/07/25 11:16:14 by mhidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, char *src, size_t dst_size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dst_size)
 {
 	size_t	src_size;
 	size_t	i;

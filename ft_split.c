@@ -6,7 +6,7 @@
 /*   By: mhidani <mhidani@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 20:36:51 by mhidani           #+#    #+#             */
-/*   Updated: 2025/07/24 21:50:33 by mhidani          ###   ########.fr       */
+/*   Updated: 2025/07/25 12:23:35 by mhidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ static char	*get_token(char *pivot, char *end, char **tokens, size_t size)
 	size_t	i;
 
 	i = 0;
+	if (!pivot || !end)
+		return (NULL);
 	if (!*end)
 		while (pivot[i])
 			i++;
@@ -66,10 +68,7 @@ static char	*get_token(char *pivot, char *end, char **tokens, size_t size)
 	{
 		i = 0;
 		while (i < size)
-		{
-			free(tokens[i]);
-			i++;
-		}
+			free(tokens[i++]);
 		free(tokens);
 		return (NULL);
 	}
@@ -96,8 +95,8 @@ char	**ft_split(char const *s, char c)
 	{
 		start = start_pivot(s, c);
 		end = end_pivot(start, c);
-		tokens[i++] = get_token(start, end, tokens, size);
-		if (!tokens[i])
+		tokens[i] = get_token(start, end, tokens, size);
+		if (!tokens[i++])
 			return (NULL);
 		s = end;
 	}

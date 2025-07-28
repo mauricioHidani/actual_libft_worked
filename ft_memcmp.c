@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhidani <mhidani@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/24 09:30:58 by mhidani           #+#    #+#             */
-/*   Updated: 2025/07/25 12:01:59 by mhidani          ###   ########.fr       */
+/*   Created: 2025/07/15 15:22:32 by mhidani           #+#    #+#             */
+/*   Updated: 2025/07/21 10:08:45 by mhidani          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t length, size_t mem_size)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	void	*allocated;
+	size_t			i;
+	unsigned char	*s1_c;
+	unsigned char	*s2_c;
 
-	if (length == 0 || mem_size == 0)
-		return (malloc(1));
-	if (length != 0 && mem_size > (size_t)-1 / length)
-		return (NULL);
-	allocated = malloc(length * mem_size);
-	if (!allocated)
-		return (NULL);
-	ft_bzero(allocated, length * mem_size);
-	return (allocated);
+	i = 0;
+	s1_c = (unsigned char *)s1;
+	s2_c = (unsigned char *)s2;
+	while (i < n)
+	{
+		if (s1_c[i] != s2_c[i])
+			return (s1_c[i] - s2_c[i]);
+		i++;
+	}
+	return (0);
 }
